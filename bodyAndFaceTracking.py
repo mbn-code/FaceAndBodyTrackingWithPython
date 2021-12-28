@@ -79,27 +79,23 @@ while True:
     # I -------- Check for face detected ---------- I
     
     if len(upperbody) > 0:    
-        print(upperbody)
-        print("Body detected.")
+        print("Body detected." + upperbody)
     else:
         body_detect = ""
 
     if len(faces_profile) > 0:    
-        print(faces_profile)
-        print("face(s) profile detected")
+        print("face(s) profile detected" + faces_profile)
     else:
         body_detect = ""
 
     if len(faces) > 0:    
-        print(faces)
-        print("Face(s) frontal detected")
+        print("Face(s) frontal detected" + faces)
     else:
         body_detect = ""
 
     # 
     if body_detect:
-        print(body_detect)
-        print("Body upper detected")
+        print("Body upper detected" + body_detect)
     else:
         pass
 
