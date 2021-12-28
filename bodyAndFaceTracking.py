@@ -1,6 +1,5 @@
 import cv2
 import os
-import numpy as np
 
 
 # here are all the haar cascades
@@ -78,29 +77,29 @@ while True:
 
 
     # I -------- Check for face detected ---------- I
-
-    import random
     
     if len(upperbody) > 0:    
         print(upperbody)
+        print("Body detected.")
     else:
         body_detect = ""
 
     if len(faces_profile) > 0:    
         print(faces_profile)
+        print("face(s) profile detected")
     else:
         body_detect = ""
 
     if len(faces) > 0:    
         print(faces)
+        print("Face(s) frontal detected")
     else:
         body_detect = ""
-
-
 
     # 
     if body_detect:
         print(body_detect)
+        print("Body upper detected")
     else:
         pass
 
