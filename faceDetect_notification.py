@@ -1,5 +1,6 @@
 import cv2
 import os
+from pync import Notifier
 
 # here are all the haar cascades
 # https://github.com/opencv/opencv/tree/master/data/haarcascades
@@ -56,18 +57,13 @@ while True:
     for (x,y,h,w) in frontalFaceCloser_detect:
         cv2.rectangle(frame, (x, y), (x + w, y + h),(0,200,0), 1)
 
-    # I -- Function for if the face is detected -- I
-    import random
-    def FaceDetected():
-        print("body detected " + " -- ID: " + str(random.randint(1000,9999)))        
 
-
-    # I -------- Check for face detected ---------- I
-    
-    if len(faces) or len(faces_profile) > 0:
-        FaceDetected()
-    else:
-        pass
+    if len(faces) > 0:
+        Notifier.notify("Face Detected", title="Face Detection",
+                        subtitle="Face Detected",
+                        sound="Glass",
+                        )
+        
 
     # -------------- Show the image ----------------
     width = 1110
