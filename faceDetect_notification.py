@@ -66,8 +66,8 @@ while True:
         
 
     # -------------- Show the image ----------------
-    width = 1110
-    height = 900
+    width = 1280
+    height = 750
     dim = (width, height)
     
     # resize image
@@ -75,7 +75,11 @@ while True:
         
     cv2.imshow("Face tracking", resized)
 
-
+    if len(faces) or len(faces_profile) > 0:
+        Notifier.notify("Face Detected", title="Face Detection",
+                        subtitle="Face Detected",
+                        sound="Glass",
+                        )
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

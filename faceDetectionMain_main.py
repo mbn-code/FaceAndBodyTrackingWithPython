@@ -70,8 +70,8 @@ while True:
         pass
 
     # -------------- Show the image ----------------
-    width = 1110
-    height = 900
+    width = 1280
+    height = 750
     dim = (width, height)
     
     # resize image
