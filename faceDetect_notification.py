@@ -1,6 +1,5 @@
 import cv2
 import os
-from pync import Notifier
 
 # here are all the haar cascades
 # https://github.com/opencv/opencv/tree/master/data/haarcascades
@@ -13,7 +12,6 @@ faceCascadeProfile = cv2.CascadeClassifier("faceProfile_extended.xml")
 
 cascPath_pro = os.path.dirname(cv2.__file__) + "frontalFaceCloser.xml"
 frontalFaceCloser = cv2.CascadeClassifier("frontalFaceCloser.xml")
-
 
 # I -- Video capture device to use 
 video_capture = cv2.VideoCapture(1)
@@ -37,7 +35,6 @@ while True:
                                          minSize=(30, 35),
                                          flags=cv2.CASCADE_SCALE_IMAGE)
 
-
     frontalFaceCloser_detect = frontalFaceCloser.detectMultiScale(gray,
                                          scaleFactor=1.1,
                                          minNeighbors=2,
@@ -57,13 +54,16 @@ while True:
     for (x,y,h,w) in frontalFaceCloser_detect:
         cv2.rectangle(frame, (x, y), (x + w, y + h),(0,200,0), 1)
 
+    # check if system is mac or linux or windows 
+    # chcek if win 10 or not
 
-    if len(faces) > 0:
-        Notifier.notify("Face Detected", title="Face Detection",
-                        subtitle="Face Detected",
-                        sound="Glass",
-                        )
-        
+    if os.name == 'Darwin':
+        if len(faces) or len(faces_profile) > 0:
+            os.system("""osascript -e 'tell application "Terminal" to display alert "Face Detected" as warning'""")
+    elif os.name == 'nt':
+        print("Operating System is Windows")
+
+
 
     # -------------- Show the image ----------------
     width = 1280
@@ -75,11 +75,6 @@ while True:
         
     cv2.imshow("Face tracking", resized)
 
-    if len(faces) or len(faces_profile) > 0:
-        Notifier.notify("Face Detected", title="Face Detection",
-                        subtitle="Face Detected",
-                        sound="Glass",
-                        )
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

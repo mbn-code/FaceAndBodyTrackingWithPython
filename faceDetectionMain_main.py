@@ -15,7 +15,7 @@ frontalFaceCloser = cv2.CascadeClassifier("frontalFaceCloser.xml")
 
 
 # I -- Video capture device to use 
-video_capture = cv2.VideoCapture(1)
+video_capture = cv2.VideoCapture(2)
 
 while True:
     # Capture frame-by-frame
@@ -64,10 +64,7 @@ while True:
 
     # I -------- Check for face detected ---------- I
     
-    if len(faces) or len(faces_profile) > 0:
-        FaceDetected()
-    else:
-        pass
+
 
     # -------------- Show the image ----------------
     width = 1280
@@ -78,8 +75,6 @@ while True:
     resized = cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
         
     cv2.imshow("Face tracking", resized)
-
-
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
