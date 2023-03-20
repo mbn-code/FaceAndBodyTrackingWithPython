@@ -35,7 +35,7 @@ net = cv2.dnn.readNetFromCaffe('deploy.prototxt', 'res10_300x300_ssd_iter_140000
 min_confidence = 0.5
 
 # Initialize the video capture object
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 # Loop over the frames from the video stream
 while True:
