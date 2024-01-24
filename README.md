@@ -1,5 +1,5 @@
 # Face Tracking System with Haar Cascades
-
+Note: This readme is written around the Main_main python file. 
 This Python script utilizes the OpenCV library to implement a simple face tracking system using Haar cascades. Haar cascades are trained classifiers that can be used for object detection. In this case, we are using Haar cascades to detect faces in a video stream. The system draws rectangles around detected faces and provides a basic function when a face is detected.
 
 ## Setup
